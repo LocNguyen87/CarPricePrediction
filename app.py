@@ -20,7 +20,7 @@ def main():
     doornumber_lbl  = ('two','four')
     doornumber_val = (1,0)
     doornumber_data = dict(zip(doornumber_lbl, doornumber_val))
-    carbody_lbl = ('convertible' 'hatchback' 'sedan' 'wagon' 'hardtop')
+    carbody_lbl = ('convertible','hatchback','sedan','wagon','hardtop')
     carbody_val = (0, 2, 3, 4, 1)
     carbody_data = dict(zip(carbody_lbl, carbody_val))
     drivewheel_lbl = ('rwd','fwd','4wd')
