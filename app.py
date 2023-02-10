@@ -4,8 +4,8 @@ import pandas as pd
 
 
 def main():
-    style = """<div style='background-color:blue; padding:12px'>
-              <h1 style='color:white'>Car Price Prediction App</h1>
+    style = """<div>
+              <h1 style='color:blue'>Car Price Prediction</h1>
        </div>"""
     st.markdown(style, unsafe_allow_html=True)
     left, right = st.columns((2,2))
@@ -54,24 +54,24 @@ def main():
     aspiration_sl = left.selectbox('Aspiration', aspiration_lbl, index=aspiration_lbl.index('turbo'))
     doornumber_sl = right.selectbox('Door Number', doornumber_lbl, index=doornumber_lbl.index('four'))
     carbody_sl = left.selectbox('Car Body', carbody_lbl, index=carbody_lbl.index('wagon'))
-    drivewheel_sl = right.selectbox('Drive Wheel', drivewheel_lbl, index=drivewheel_lbl.index('rwd'))
+    drivewheel_sl = right.selectbox('Drive Wheel :white_check_mark:', drivewheel_lbl, index=drivewheel_lbl.index('rwd'))
     enginelocation_sl = left.selectbox('Engine Location', enginelocation_lbl, index=enginelocation_lbl.index('front'))
-    wheelbase = right.number_input('wheelbase',  step=1.0, format='%.1f', value=104.3)
-    carlength = left.number_input('carlength',  step=1.0, format='%.1f', value=188.8)
-    carwidth = right.number_input('carwidth',  step=1.0, format='%.1f', value=67.2)
-    carheight = left.number_input('carheight',  step=1.0, format='%.1f', value=57.5)
-    curbweight  = right.number_input('curbweight',  step=1.0, format='%.1f', value=3157.0)
+    wheelbase = right.number_input('Wheel Base :white_check_mark:',  step=1.0, format='%.1f', value=104.3)
+    carlength = left.number_input('Car Lenght :white_check_mark:',  step=1.0, format='%.1f', value=188.8)
+    carwidth = right.number_input('Car Width :white_check_mark:',  step=1.0, format='%.1f', value=67.2)
+    carheight = left.number_input('Car Height',  step=1.0, format='%.1f', value=57.5)
+    curbweight  = right.number_input('Curb Weight :white_check_mark:',  step=1.0, format='%.1f', value=3157.0)
     enginetype_sl = left.selectbox('Engine Type', enginetype_lbl, index=enginetype_lbl.index('ohc'))
     cylindernumber_sl = right.selectbox('Cylinder Number', cylindernumber_lbl, index=cylindernumber_lbl.index('four'))
-    enginesize = left.number_input('enginesize',  step=1.0, format='%.1f', value=130.0)
-    fuelsystem_sl = right.selectbox('Fuel System', fuelsystem_lbl, index=fuelsystem_lbl.index('mpfi'))
-    boreratio = left.number_input('boreratio',  step=1.0, format='%.1f', value=3.62)
+    enginesize = left.number_input('Engine Size :white_check_mark:',  step=1.0, format='%.1f', value=130.0)
+    fuelsystem_sl = right.selectbox('Fuel System :white_check_mark:', fuelsystem_lbl, index=fuelsystem_lbl.index('mpfi'))
+    boreratio = left.number_input('Bore Ratio :white_check_mark:',  step=1.0, format='%.2f', value=3.62)
     stroke = right.number_input('stroke',  step=1.0, format='%.1f', value=3.15)
     compressionratio = left.number_input('compressionratio',  step=1.0, format='%.1f', value=7.5)
-    horsepower = right.number_input('horsepower',  step=1.0, format='%.1f', value=162.0)
+    horsepower = right.number_input('Horse Power :white_check_mark:',  step=1.0, format='%.1f', value=162.0)
     peakrpm = left.number_input('peakrpm',  step=1.0, format='%.1f', value=5100.0)
-    citympg = right.number_input('citympg',  step=1.0, format='%.1f', value=17.0)
-    highwaympg = left.number_input('highwaympg',  step=1.0, format='%.1f', value=22.0)
+    citympg = right.number_input('City Mpg :white_check_mark:',  step=1.0, format='%.1f', value=17.0)
+    highwaympg = left.number_input('Highway Mpg :white_check_mark:',  step=1.0, format='%.1f', value=22.0)
 
     button = st.button('Predict')
     # if button is pressed
