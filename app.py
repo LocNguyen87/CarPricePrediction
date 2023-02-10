@@ -5,7 +5,7 @@ import pandas as pd
 
 def main():
     style = """<div style='background-color:blue; padding:12px'>
-              <h1 style='color:black'>Car Price Prediction App</h1>
+              <h1 style='color:white'>Car Price Prediction App</h1>
        </div>"""
     st.markdown(style, unsafe_allow_html=True)
     left, right = st.columns((2,2))
@@ -47,21 +47,21 @@ def main():
     # end combobox mapping data
 
     symboling = left.number_input('Symboling', step=1.0, format='%.1f', value=-1.0)
-    fueltype_sl = right.selectbox('Fuel Type', fueltype_lbl)
-    aspiration_sl = left.selectbox('Aspiration', aspiration_lbl)
-    doornumber_sl = right.selectbox('Door Number', doornumber_lbl)
-    carbody_sl = left.selectbox('Car Body', carbody_lbl)
-    drivewheel_sl = right.selectbox('Drive Wheel', drivewheel_lbl)
-    enginelocation_sl = left.selectbox('Engine Location', enginelocation_lbl)
+    fueltype_sl = right.selectbox('Fuel Type', fueltype_lbl, index=fueltype_lbl.index('gas'))
+    aspiration_sl = left.selectbox('Aspiration', aspiration_lbl, index=aspiration_lbl.index('turbo'))
+    doornumber_sl = right.selectbox('Door Number', doornumber_lbl, index=doornumber_lbl.index('four'))
+    carbody_sl = left.selectbox('Car Body', carbody_lbl, index=carbody_lbl.index('wagon'))
+    drivewheel_sl = right.selectbox('Drive Wheel', drivewheel_lbl, index=drivewheel_lbl.index('rwd'))
+    enginelocation_sl = left.selectbox('Engine Location', enginelocation_lbl, index=enginelocation_lbl.index('front'))
     wheelbase = right.number_input('wheelbase',  step=1.0, format='%.1f', value=104.3)
     carlength = left.number_input('carlength',  step=1.0, format='%.1f', value=188.8)
     carwidth = right.number_input('carwidth',  step=1.0, format='%.1f', value=67.2)
     carheight = left.number_input('carheight',  step=1.0, format='%.1f', value=57.5)
     curbweight  = right.number_input('curbweight',  step=1.0, format='%.1f', value=3157.0)
-    enginetype_sl = left.selectbox('Engine Type', enginetype_lbl)
-    cylindernumber_sl = right.selectbox('Cylinder Number', cylindernumber_lbl)
+    enginetype_sl = left.selectbox('Engine Type', enginetype_lbl, index=enginetype_lbl.index('ohc'))
+    cylindernumber_sl = right.selectbox('Cylinder Number', cylindernumber_lbl, index=cylindernumber_lbl.index('four'))
     enginesize = left.number_input('enginesize',  step=1.0, format='%.1f', value=130.0)
-    fuelsystem_sl = right.selectbox('Fuel System', fuelsystem_lbl)
+    fuelsystem_sl = right.selectbox('Fuel System', fuelsystem_lbl, index=fuelsystem_lbl.index('mpfi'))
     boreratio = left.number_input('boreratio',  step=1.0, format='%.1f', value=3.62)
     stroke = right.number_input('stroke',  step=1.0, format='%.1f', value=3.15)
     compressionratio = left.number_input('compressionratio',  step=1.0, format='%.1f', value=7.5)
@@ -69,8 +69,8 @@ def main():
     peakrpm = left.number_input('peakrpm',  step=1.0, format='%.1f', value=5100.0)
     citympg = right.number_input('citympg',  step=1.0, format='%.1f', value=17.0)
     highwaympg = left.number_input('highwaympg',  step=1.0, format='%.1f', value=22.0)
-    carbrand_sl = right.selectbox('Car Brand', carbrand_lbl)
-    carmodel_sl = left.selectbox('Car Model', carmodel_lbl)
+    carbrand_sl = right.selectbox('Car Brand', carbrand_lbl, index=carbrand_lbl.index('volvo'))
+    carmodel_sl = left.selectbox('Car Model', carmodel_lbl, index=carmodel_lbl.index('diesel'))
 
     button = st.button('Predict')
     # if button is pressed
@@ -88,7 +88,7 @@ def main():
         carbrand = carbrand_data[carbrand_sl]
         carmodel = carmodel_data[carmodel_sl]
         # make prediction
-        result = predict(symboling, fueltype, aspiration, doornumber, carbody,drivewheel, enginelocation, wheelbase, carlength,carwidth, carheight, curbweight, enginetype,cylindernumber, enginesize, fuelsystem, boreratio,stroke, compressionratio, horsepower, peakrpm, citympg,highwaympg, carbrand, carmodel)
+        result = predict(carlength, carwidth, curbweight, enginesize, horsepower, wheelbase, boreratio, citympg, highwaympg, drivewheel, fuelsystem)
         st.success(f'The value of the car is ${result}')
 
 # load the train model
@@ -99,15 +99,14 @@ with open('rf_model.pkl', 'rb') as rf:
 with open('scaler.pkl', 'rb') as stds:
     scaler = pickle.load(stds)
 
-def predict(symboling, fueltype, aspiration, doornumber, carbody,drivewheel, enginelocation, wheelbase, carlength,carwidth, carheight, curbweight, enginetype, cylindernumber, enginesize, fuelsystem, boreratio,stroke, compressionratio, horsepower, peakrpm, citympg,highwaympg, carbrand, carmodel):
-
+def predict(carlength, carwidth, curbweight, enginesize, horsepower, wheelbase, boreratio, citympg, highwaympg, drivewheel, fuelsystem):
     # create data frame
-    lists = [symboling, fueltype, aspiration, doornumber, carbody,drivewheel, enginelocation, wheelbase, carlength,carwidth, carheight, curbweight, enginetype,cylindernumber, enginesize, fuelsystem, boreratio,stroke, compressionratio, horsepower, peakrpm, citympg,highwaympg, carbrand, carmodel]
-    df = pd.DataFrame(lists).transpose()
+    lists = [carlength, carwidth, curbweight, enginesize, horsepower, wheelbase, boreratio, citympg, highwaympg, drivewheel, fuelsystem]
+    df = pd.DataFrame(lists).values.reshape(-1,11)
     # scaling the data
-    scaler.transform(df)
+    dfs = scaler.transform(df)
     # making predictions using the train model
-    prediction = model.predict(df)
+    prediction = model.predict(dfs)
     result = int(prediction)
     return result
 
