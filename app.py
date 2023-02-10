@@ -4,10 +4,12 @@ import pandas as pd
 
 
 def main():
+    df = pd.read_csv('./carprice.csv')
     style = """<div>
               <h1 style='color:blue'>Car Price Prediction</h1>
        </div>"""
     st.markdown(style, unsafe_allow_html=True)
+    st.dataframe(df)
     left, center, right = st.columns(3)
 
     # combobox mapping data
