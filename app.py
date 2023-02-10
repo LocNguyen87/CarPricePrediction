@@ -9,7 +9,9 @@ def main():
               <h1 style='color:blue'>Car Price Prediction</h1>
        </div>"""
     st.markdown(style, unsafe_allow_html=True)
-    st.dataframe(df.loc[random.randint(0, 204),:],height=50)
+    testsr = df.iloc[random.randint(0,204),:]
+    testdf = pd.DataFrame(testsr).transpose()
+    st.dataframe(testdf,height=50)
     col1, col2, col3, col4 = st.columns(4)
 
     # combobox mapping data
