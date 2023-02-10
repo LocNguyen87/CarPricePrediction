@@ -10,6 +10,7 @@ def main():
        </div>"""
     st.markdown(style, unsafe_allow_html=True)
     testsr = df.iloc[random.randint(0,204),:]
+    st.markdown('Random record for testing: ')
     testdf = pd.DataFrame(testsr).transpose()
     st.dataframe(testdf,height=50)
     col1, col2, col3, col4 = st.columns(4)
