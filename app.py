@@ -59,15 +59,15 @@ def main():
             fueltype_sl = st.selectbox('Fuel Type', fueltype_lbl, index=fueltype_lbl.index('gas'))
             aspiration_sl = st.selectbox('Aspiration', aspiration_lbl, index=aspiration_lbl.index('turbo'))
             doornumber_sl = st.selectbox('Door Number', doornumber_lbl, index=doornumber_lbl.index('four'))
-        with c2:
             carbody_sl = st.selectbox('Car Body', carbody_lbl, index=carbody_lbl.index('wagon'))
+        with c2:
             drivewheel_sl = st.selectbox('Drive Wheel :white_check_mark:', drivewheel_lbl, index=drivewheel_lbl.index('rwd'))
             enginelocation_sl = st.selectbox('Engine Location', enginelocation_lbl, index=enginelocation_lbl.index('front'))
             wheelbase = st.number_input('Wheel Base :white_check_mark:',  step=1.0, format='%.1f', value=104.3)
             carlength = st.number_input('Car Length :white_check_mark:',  step=1.0, format='%.1f', value=188.8)
             carwidth = st.number_input('Car Width :white_check_mark:',  step=1.0, format='%.1f', value=67.2)
-        with c3:
             carheight = st.number_input('Car Height',  step=1.0, format='%.1f', value=57.5)
+        with c3:
             curbweight  = st.number_input('Curb Weight :white_check_mark:',  step=1.0, format='%.1f', value=3157.0)
             enginetype_sl = st.selectbox('Engine Type', enginetype_lbl, index=enginetype_lbl.index('ohc'))
             cylindernumber_sl = st.selectbox('Cylinder Number', cylindernumber_lbl, index=cylindernumber_lbl.index('four'))
