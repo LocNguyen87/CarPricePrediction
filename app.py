@@ -49,8 +49,8 @@ def main():
     carmodel_val = (76,122,106,1,71,14,12,15,11,133,134,140,135,136,83,95,131,111,38,63,94,46,45,56,64,57,39,43,26,27,42,25,41,105,40,97,61,62,138,137,139,117,81,116,114,21,77,115,78,80,79,70,36,35,119,100,120,37,112,58,91,86,102,75,92,96,103,132,82,113,87,126,88,84,98,44,99,66,72,101,124,85,16,10,17,20,18,74,60,118,73,130,69,89,104,32,29,3,19,22,24,23,0,68,30,28,107,108,127,128,55,52,48,53,49,31,90,47,50,34,51,54,121,125,59,33,109,2,93,129,13,123,65,110,5,4,6,7,9,67,8)
     carmodel_data = dict(zip(carmodel_lbl, carmodel_val))
     # end combobox mapping data
-
-    with st.form(key='predictForm'):
+    predictForm = st.form(key='predictForm')
+    with predictForm:
         c1, c2, c3, c4 = st.columns(4)
         with c1:
             carbrand_sl = st.selectbox('Car Brand', carbrand_lbl, index=carbrand_lbl.index('volvo'))
@@ -75,14 +75,14 @@ def main():
             fuelsystem_sl = st.selectbox('Fuel System :white_check_mark:', fuelsystem_lbl, index=fuelsystem_lbl.index('mpfi'))
             boreratio = st.number_input('Bore Ratio :white_check_mark:',  step=1.0, format='%.2f', value=3.62)
         with c4:
-            stroke = col4.number_input('Stroke',  step=1.0, format='%.2f', value=3.15)
-            compressionratio = col1.number_input('compressionratio',  step=1.0, format='%.1f', value=7.5)
-            horsepower = col2.number_input('Horse Power :white_check_mark:',  step=1.0, format='%.1f', value=162.0)
-            peakrpm = col3.number_input('peakrpm',  step=1.0, format='%.1f', value=5100.0)
-            citympg = col4.number_input('City Mpg :white_check_mark:',  step=1.0, format='%.1f', value=17.0)
-            highwaympg = col1.number_input('Highway Mpg :white_check_mark:',  step=1.0, format='%.1f', value=22.0)
+            stroke = st.number_input('Stroke',  step=1.0, format='%.2f', value=3.15)
+            compressionratio = st.number_input('compressionratio',  step=1.0, format='%.1f', value=7.5)
+            horsepower = st.number_input('Horse Power :white_check_mark:',  step=1.0, format='%.1f', value=162.0)
+            peakrpm = st.number_input('peakrpm',  step=1.0, format='%.1f', value=5100.0)
+            citympg = st.number_input('City Mpg :white_check_mark:',  step=1.0, format='%.1f', value=17.0)
+            highwaympg = st.number_input('Highway Mpg :white_check_mark:',  step=1.0, format='%.1f', value=22.0)
 
-        button = st.form_submit_button('Predict')
+        button = predictForm.form_submit_button('Predict')
 
     # form interface
     
