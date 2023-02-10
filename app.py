@@ -57,7 +57,7 @@ def main():
     drivewheel_sl = right.selectbox('Drive Wheel :white_check_mark:', drivewheel_lbl, index=drivewheel_lbl.index('rwd'))
     enginelocation_sl = left.selectbox('Engine Location', enginelocation_lbl, index=enginelocation_lbl.index('front'))
     wheelbase = right.number_input('Wheel Base :white_check_mark:',  step=1.0, format='%.1f', value=104.3)
-    carlength = left.number_input('Car Lenght :white_check_mark:',  step=1.0, format='%.1f', value=188.8)
+    carlength = left.number_input('Car Length :white_check_mark:',  step=1.0, format='%.1f', value=188.8)
     carwidth = right.number_input('Car Width :white_check_mark:',  step=1.0, format='%.1f', value=67.2)
     carheight = left.number_input('Car Height',  step=1.0, format='%.1f', value=57.5)
     curbweight  = right.number_input('Curb Weight :white_check_mark:',  step=1.0, format='%.1f', value=3157.0)
