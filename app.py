@@ -66,7 +66,7 @@ def main():
     enginesize = left.number_input('Engine Size :white_check_mark:',  step=1.0, format='%.1f', value=130.0)
     fuelsystem_sl = right.selectbox('Fuel System :white_check_mark:', fuelsystem_lbl, index=fuelsystem_lbl.index('mpfi'))
     boreratio = left.number_input('Bore Ratio :white_check_mark:',  step=1.0, format='%.2f', value=3.62)
-    stroke = right.number_input('stroke',  step=1.0, format='%.1f', value=3.15)
+    stroke = right.number_input('Stroke',  step=1.0, format='%.2f', value=3.15)
     compressionratio = left.number_input('compressionratio',  step=1.0, format='%.1f', value=7.5)
     horsepower = right.number_input('Horse Power :white_check_mark:',  step=1.0, format='%.1f', value=162.0)
     peakrpm = left.number_input('peakrpm',  step=1.0, format='%.1f', value=5100.0)
