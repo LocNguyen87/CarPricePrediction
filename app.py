@@ -46,6 +46,9 @@ def main():
     carmodel_data = dict(zip(carmodel_lbl, carmodel_val))
     # end combobox mapping data
 
+    # form interface
+    carbrand_sl = left.selectbox('Car Brand', carbrand_lbl, index=carbrand_lbl.index('volvo'))
+    carmodel_sl = right.selectbox('Car Model', carmodel_lbl, index=carmodel_lbl.index('diesel'))
     symboling = left.number_input('Symboling', step=1.0, format='%.1f', value=-1.0)
     fueltype_sl = right.selectbox('Fuel Type', fueltype_lbl, index=fueltype_lbl.index('gas'))
     aspiration_sl = left.selectbox('Aspiration', aspiration_lbl, index=aspiration_lbl.index('turbo'))
@@ -69,8 +72,6 @@ def main():
     peakrpm = left.number_input('peakrpm',  step=1.0, format='%.1f', value=5100.0)
     citympg = right.number_input('citympg',  step=1.0, format='%.1f', value=17.0)
     highwaympg = left.number_input('highwaympg',  step=1.0, format='%.1f', value=22.0)
-    carbrand_sl = right.selectbox('Car Brand', carbrand_lbl, index=carbrand_lbl.index('volvo'))
-    carmodel_sl = left.selectbox('Car Model', carmodel_lbl, index=carmodel_lbl.index('diesel'))
 
     button = st.button('Predict')
     # if button is pressed
