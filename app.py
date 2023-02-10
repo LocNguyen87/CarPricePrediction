@@ -1,7 +1,7 @@
 import streamlit as st
 import pickle
 import pandas as pd
-
+import random
 
 def main():
     df = pd.read_csv('./carprice.csv')
@@ -9,7 +9,7 @@ def main():
               <h1 style='color:blue'>Car Price Prediction</h1>
        </div>"""
     st.markdown(style, unsafe_allow_html=True)
-    st.dataframe(df,height=50)
+    st.dataframe(df.loc[random.randint(0, 204),:],height=50)
     col1, col2, col3, col4 = st.columns(4)
 
     # combobox mapping data
