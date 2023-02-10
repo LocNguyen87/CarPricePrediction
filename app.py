@@ -6,7 +6,7 @@ import random
 def main():
     df = pd.read_csv('./carprice.csv')
     style = """<div>
-              <h1 style='color:blue'>Car Price Prediction</h1>
+              <h1 style='color:#7d7d7d'>Car Price Prediction</h1>
        </div>"""
     st.markdown(style, unsafe_allow_html=True)
     testsr = df.iloc[random.randint(0,204),:]
