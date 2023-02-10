@@ -9,7 +9,7 @@ def main():
               <h1 style='color:blue'>Car Price Prediction</h1>
        </div>"""
     st.markdown(style, unsafe_allow_html=True)
-    testsr = df.iloc[random.randint(0,204),:]
+    testsr = df.iloc[100,:]
     st.markdown('Random record for testing: ')
     testdf = pd.DataFrame(testsr).transpose()
     st.dataframe(testdf,height=50)
