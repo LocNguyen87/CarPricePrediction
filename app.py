@@ -13,7 +13,6 @@ def main():
     st.markdown('Random record for testing: ')
     testdf = pd.DataFrame(testsr).transpose()
     st.dataframe(testdf,height=50)
-    col1, col2, col3, col4 = st.columns(4)
 
     # combobox mapping data
     fueltype_lbl = ('gas','diesel')
@@ -51,34 +50,42 @@ def main():
     carmodel_data = dict(zip(carmodel_lbl, carmodel_val))
     # end combobox mapping data
 
-    # form interface
-    carbrand_sl = col1.selectbox('Car Brand', carbrand_lbl, index=carbrand_lbl.index('volvo'))
-    carmodel_sl = col2.selectbox('Car Model', carmodel_lbl, index=carmodel_lbl.index('diesel'))
-    symboling = col3.number_input('Symboling', step=1.0, format='%.1f', value=-1.0)
-    fueltype_sl = col4.selectbox('Fuel Type', fueltype_lbl, index=fueltype_lbl.index('gas'))
-    aspiration_sl = col1.selectbox('Aspiration', aspiration_lbl, index=aspiration_lbl.index('turbo'))
-    doornumber_sl = col2.selectbox('Door Number', doornumber_lbl, index=doornumber_lbl.index('four'))
-    carbody_sl = col3.selectbox('Car Body', carbody_lbl, index=carbody_lbl.index('wagon'))
-    drivewheel_sl = col4.selectbox('Drive Wheel :white_check_mark:', drivewheel_lbl, index=drivewheel_lbl.index('rwd'))
-    enginelocation_sl = col1.selectbox('Engine Location', enginelocation_lbl, index=enginelocation_lbl.index('front'))
-    wheelbase = col2.number_input('Wheel Base :white_check_mark:',  step=1.0, format='%.1f', value=104.3)
-    carlength = col3.number_input('Car Length :white_check_mark:',  step=1.0, format='%.1f', value=188.8)
-    carwidth = col4.number_input('Car Width :white_check_mark:',  step=1.0, format='%.1f', value=67.2)
-    carheight = col1.number_input('Car Height',  step=1.0, format='%.1f', value=57.5)
-    curbweight  = col2.number_input('Curb Weight :white_check_mark:',  step=1.0, format='%.1f', value=3157.0)
-    enginetype_sl = col3.selectbox('Engine Type', enginetype_lbl, index=enginetype_lbl.index('ohc'))
-    cylindernumber_sl = col4.selectbox('Cylinder Number', cylindernumber_lbl, index=cylindernumber_lbl.index('four'))
-    enginesize = col1.number_input('Engine Size :white_check_mark:',  step=1.0, format='%.1f', value=130.0)
-    fuelsystem_sl = col2.selectbox('Fuel System :white_check_mark:', fuelsystem_lbl, index=fuelsystem_lbl.index('mpfi'))
-    boreratio = col3.number_input('Bore Ratio :white_check_mark:',  step=1.0, format='%.2f', value=3.62)
-    stroke = col4.number_input('Stroke',  step=1.0, format='%.2f', value=3.15)
-    compressionratio = col1.number_input('compressionratio',  step=1.0, format='%.1f', value=7.5)
-    horsepower = col2.number_input('Horse Power :white_check_mark:',  step=1.0, format='%.1f', value=162.0)
-    peakrpm = col3.number_input('peakrpm',  step=1.0, format='%.1f', value=5100.0)
-    citympg = col4.number_input('City Mpg :white_check_mark:',  step=1.0, format='%.1f', value=17.0)
-    highwaympg = col1.number_input('Highway Mpg :white_check_mark:',  step=1.0, format='%.1f', value=22.0)
+    with st.form(key='predictForm'):
+        c1, c2, c3, c4 = st.columns(4)
+        with c1:
+            carbrand_sl = st.selectbox('Car Brand', carbrand_lbl, index=carbrand_lbl.index('volvo'))
+            carmodel_sl = st.selectbox('Car Model', carmodel_lbl, index=carmodel_lbl.index('diesel'))
+            symboling = st.number_input('Symboling', step=1.0, format='%.1f', value=-1.0)
+            fueltype_sl = st.selectbox('Fuel Type', fueltype_lbl, index=fueltype_lbl.index('gas'))
+            aspiration_sl = st.selectbox('Aspiration', aspiration_lbl, index=aspiration_lbl.index('turbo'))
+            doornumber_sl = st.selectbox('Door Number', doornumber_lbl, index=doornumber_lbl.index('four'))
+        with c2:
+            carbody_sl = st.selectbox('Car Body', carbody_lbl, index=carbody_lbl.index('wagon'))
+            drivewheel_sl = st.selectbox('Drive Wheel :white_check_mark:', drivewheel_lbl, index=drivewheel_lbl.index('rwd'))
+            enginelocation_sl = st.selectbox('Engine Location', enginelocation_lbl, index=enginelocation_lbl.index('front'))
+            wheelbase = st.number_input('Wheel Base :white_check_mark:',  step=1.0, format='%.1f', value=104.3)
+            carlength = st.number_input('Car Length :white_check_mark:',  step=1.0, format='%.1f', value=188.8)
+            carwidth = st.number_input('Car Width :white_check_mark:',  step=1.0, format='%.1f', value=67.2)
+        with c3:
+            carheight = st.number_input('Car Height',  step=1.0, format='%.1f', value=57.5)
+            curbweight  = st.number_input('Curb Weight :white_check_mark:',  step=1.0, format='%.1f', value=3157.0)
+            enginetype_sl = st.selectbox('Engine Type', enginetype_lbl, index=enginetype_lbl.index('ohc'))
+            cylindernumber_sl = st.selectbox('Cylinder Number', cylindernumber_lbl, index=cylindernumber_lbl.index('four'))
+            enginesize = st.number_input('Engine Size :white_check_mark:',  step=1.0, format='%.1f', value=130.0)
+            fuelsystem_sl = st.selectbox('Fuel System :white_check_mark:', fuelsystem_lbl, index=fuelsystem_lbl.index('mpfi'))
+            boreratio = st.number_input('Bore Ratio :white_check_mark:',  step=1.0, format='%.2f', value=3.62)
+        with c4:
+            stroke = col4.number_input('Stroke',  step=1.0, format='%.2f', value=3.15)
+            compressionratio = col1.number_input('compressionratio',  step=1.0, format='%.1f', value=7.5)
+            horsepower = col2.number_input('Horse Power :white_check_mark:',  step=1.0, format='%.1f', value=162.0)
+            peakrpm = col3.number_input('peakrpm',  step=1.0, format='%.1f', value=5100.0)
+            citympg = col4.number_input('City Mpg :white_check_mark:',  step=1.0, format='%.1f', value=17.0)
+            highwaympg = col1.number_input('Highway Mpg :white_check_mark:',  step=1.0, format='%.1f', value=22.0)
 
-    button = st.button('Predict')
+        button = st.form_submit_button('Predict')
+
+    # form interface
+    
     # if button is pressed
     if button:
         # transform combobox data
