@@ -9,7 +9,7 @@ def main():
               <h1 style='color:blue'>Car Price Prediction</h1>
        </div>"""
     st.markdown(style, unsafe_allow_html=True)
-    st.dataframe(df)
+    st.dataframe(df,height=100)
     col1, col2, col3, col4 = st.columns(4)
 
     # combobox mapping data
